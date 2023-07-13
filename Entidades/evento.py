@@ -27,7 +27,7 @@ class Evento:
         }
 
     @classmethod
-    def from_json(self,data):
+    def from_json(cls,data):
         id = data["id"]
         nombre = data["nombre"]
         artista = data["artista"]

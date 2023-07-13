@@ -22,7 +22,7 @@ class Review:
         }
         
     @classmethod
-    def from_json(self,data):
+    def from_json(cls,data):
         id = data["id"]
         id_evento = data["id_evento"]
         id_usuario = data["id_usuario"]

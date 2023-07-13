@@ -20,7 +20,7 @@ class RutaVisita:
         }
         
     @classmethod
-    def from_json(self,data):
+    def from_json(cls,data):
         id = data["id"]
         nombre = data["nombre"]
         destinos = data["destinos"]

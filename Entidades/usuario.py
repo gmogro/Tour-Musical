@@ -27,7 +27,7 @@ class Usuario:
         }
         
     @classmethod
-    def from_json(self,data):
+    def from_json(cls,data):
         id = data["id"]
         nombre = data["nombre"]
         apellido = data["apellido"]
