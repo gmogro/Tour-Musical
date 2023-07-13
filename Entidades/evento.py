@@ -21,4 +21,6 @@ def to_json(self):
 
 @classmethod
 def from_json(self,data):
-    return "devolve un evento"
+    id = data["id"]
+    return Evento(id)
+
