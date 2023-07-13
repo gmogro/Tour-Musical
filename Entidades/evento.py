@@ -1,4 +1,5 @@
 class Evento:
+
     def __init__(self,id,nombre,artista,genero,
     id_ubicacion,hora_inicio,descripcion,imagen):
         self.id = id
@@ -10,17 +11,30 @@ class Evento:
         self.descripcion = descripcion
         self.imagen = imagen
 
-def __str__(self):
-    return f"{self.nombre}"
+    def __str__(self):
+        return f"{self.nombre} - {self.artista} - {self.genero} - {self.hora_inicio} - {self.descripcion}"
 
-def to_json(self):
-    return {
-        "id": self.id,
-        "nombre": self.nombre
-    }
+    def to_json(self):
+        return {
+            "id": self.id,
+            "nombre": self.nombre,
+            "artista": self.artista,
+            "genero" : self.genero,
+            "id_ubicacion" : self.id_ubicacion,
+            "hora_inicio" : self.hora_inicio,
+            "descripcion" : self.descripcion,
+            "imagen": self.imagen
+        }
 
-@classmethod
-def from_json(self,data):
-    id = data["id"]
-    return Evento(id)
+    @classmethod
+    def from_json(self,data):
+        id = data["id"]
+        nombre = data["nombre"]
+        artista = data["artista"]
+        genero = data["genero"],
+        id_ubicacion = data["id_ubicacion"],
+        hora_inicio = data["hora_inicio"],
+        descripcion = data["descripcion"],
+        imagen = data["imagen"]
+        return Evento(id,nombre,artista,genero,id_ubicacion,hora_inicio,descripcion,imagen)
 
