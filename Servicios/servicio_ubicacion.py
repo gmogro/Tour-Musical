@@ -49,7 +49,13 @@ class ServicioUbicacion:
         else:
             print("que no se encuentra la Ubicacion")
     
-    
+    def finalizar(self):
+        with open('Persistencia/Ubicacion.json', 'w') as f:
+            lista = []
+            for ubicacion in self.ubicaciones:
+                lista.append(ubicacion.to_json())
+            json.dump(lista, f, indent=4)
+
 
     
 
