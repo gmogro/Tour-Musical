@@ -1,2 +1,9 @@
-with open("Persistencia/eventos.json",'w') as file:
-    print("creo y escribo eventos.json")
+from Servicios.servicio_ubicacion import ServicioUbicacion
+from Servicios.servicio_evento import ServicioEventos
+
+
+serv_ubicacion = ServicioUbicacion()
+serv_evento = ServicioEventos()
+
+serv_ubicacion.crearUbicacion()
+
