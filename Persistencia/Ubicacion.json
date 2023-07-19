@@ -4,8 +4,17 @@
         "nombre": "Mercado Artesanal",
         "direccion": "San Martin",
         "coordenadas": [
-            "12551",
-            "15251251"
+            "124124",
+            "124124124"
+        ]
+    },
+    {
+        "id": 2,
+        "nombre": "la esquina",
+        "direccion": "leguizamon 1243124",
+        "coordenadas": [
+            "12214",
+            "124124"
         ]
     }
 ]

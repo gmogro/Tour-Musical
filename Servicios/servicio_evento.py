@@ -11,7 +11,7 @@ class ServicioEventos:
                 print(eventos_json)
             for data in eventos_json:
                 eventos.append(Evento.from_json(data))
-        except Exception as error:
+        except FileNotFoundError as error:
             with open("Persistencia/Eventos.json","w") as file:
                 json.dump(eventos, file, indent=4)
         finally:

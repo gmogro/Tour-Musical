@@ -16,13 +16,8 @@ class ServicioUbicacion:
         finally:
             self.ubicaciones = ubicaciones
     #CRUD ABM
-    def crearUbicacion(self):
+    def crearUbicacion(self,nombre,direccion,coordenadas = None):
         id = len(self.ubicaciones) + 1 
-        nombre = input("Ingrese el nombre : ")
-        direccion = input("Ingrese la direccion : ")
-        coordenadas = []
-        for i in range(2):
-            coordenadas.append(input("Ingrese la coordenada : "))
         ubicacion = Ubicacion(id,nombre,direccion,coordenadas)
         self.ubicaciones.append(ubicacion)
     
@@ -42,7 +37,7 @@ class ServicioUbicacion:
             direccion = input("Ingrese la direccion : ")
             coordenadas = []
             for i in range(2):
-                coordenadas.append(input("Ingrese la coordenada : "))
+                coordenadas.append(float(input("Ingrese la coordenada : ")))
             ubicacion.nombre = nombre
             ubicacion.direccion = direccion
             ubicacion.coordenadas = coordenadas
