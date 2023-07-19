@@ -5,16 +5,16 @@ class ServicioUbicacion:
 
     def __init__(self):
         ubicaciones = []
-        with open("Persistencia/Ubicacion.json","r") as file:
-            ubicaciones_json = json.load(file)
-            print(ubicaciones_json)
-            
-        for data in ubicaciones_json:
-            ubicaciones.append(Ubicacion.from_json(data))
-        self.ubicaciones = ubicaciones
-
-    
-
+        try:
+            with open("Persistencia/Ubicacion.json","r") as file:
+                ubicaciones_json = json.load(file)
+            for data in ubicaciones_json:
+                ubicaciones.append(Ubicacion.from_json(data))
+        except FileNotFoundError:
+            with open("Persistencia/Ubicacion.json","w") as file:
+                json.dump(ubicaciones, file, indent=4)
+        finally:
+            self.ubicaciones = ubicaciones
     #CRUD ABM
     def crearUbicacion(self):
         id = len(self.ubicaciones) + 1 

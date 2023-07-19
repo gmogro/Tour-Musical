@@ -1,20 +1,11 @@
 [
     {
         "id": 1,
-        "nombre": "los Simpsons",
-        "direccion": "Av siempre viva 123",
+        "nombre": "Mercado Artesanal",
+        "direccion": "San Martin",
         "coordenadas": [
-            1242.1241,
-            124124.142
-        ]
-    },
-    {
-        "id": 2,
-        "nombre": "Mercado artesanal",
-        "direccion": "san martin 2124",
-        "coordenadas": [
-            "12412414",
-            "456457"
+            "12551",
+            "15251251"
         ]
     }
 ]
