@@ -44,6 +44,9 @@ class ServicioUbicacion:
         else:
             print("que no se encuentra la Ubicacion")
     
+    def get_values(self):
+        return self.ubicaciones
+
     def finalizar(self):
         with open('Persistencia/Ubicacion.json', 'w') as f:
             lista = []

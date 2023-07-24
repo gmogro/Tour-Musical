@@ -16,5 +16,14 @@
             "12214",
             "124124"
         ]
+    },
+    {
+        "id": 3,
+        "nombre": "Mercado San Miguel",
+        "direccion": "San Martin 123",
+        "coordenadas": [
+            "214142",
+            "412142142"
+        ]
     }
 ]
