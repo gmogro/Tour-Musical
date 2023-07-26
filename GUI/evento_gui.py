@@ -1,17 +1,13 @@
+from tkinter import *
+import tkinter as tk
+from tkinter import ttk
 import customtkinter
 import os
 from PIL import Image
-from CTkTable import *
-
+from Servicios.servicio_evento import ServicioEventos
 class EventoGui(customtkinter.CTkFrame):
 
     def __init__(self,root,corner_radius):
-        header = ["NOMBRE","ARTISTA","UBICACION","INICIO","DESCRIPCION","OPCIONES"]
-        value = [header,
-         [1,2,3,4,5,6],
-         [1,2,3,4,5,6],
-         [1,2,3,4,5,6],
-         [1,2,3,4,5,6]]
         super().__init__(root,corner_radius)
         self.grid_columnconfigure(0, weight=1)
         image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "images")
@@ -36,6 +32,57 @@ class EventoGui(customtkinter.CTkFrame):
         self.boton_editar.grid(row=0,column=2,padx=10,pady=10)
         self.boton_eliminar.grid(row=0,column=3,padx=10,pady=10)
         self.boton_ver.grid(row=0,column=4,padx=10,pady=10)
+        
+        self.create_table()
 
-        self.table = CTkTable(self.frame_table,  row=6, column=6, values=value)
+    def get_values(self):
+        eventos = ServicioEventos()
+        lista_eventos = eventos.get_eventos()
+        values = []
+        for evento in lista_eventos:
+            fila_evento = []
+            fila_evento.append(evento.nombre)
+            fila_evento.append(evento.artista)
+            fila_evento.append(evento.genero[0])
+            fila_evento.append(evento.id_ubicacion)
+            fila_evento.append(eventos.get_ubicacion(evento.id_ubicacion[0]))
+            fila_evento.append(eventos.get_ubicacion(evento.id_ubicacion[0]))
+            fila_evento.append(evento.hora_inicio)
+            values.append(fila_evento)
+        return values
+    
+    def insert_table(self):
+        eventos = self.get_values()
+        for evento in eventos:
+            self.table.insert("", tk.END, values=evento)
+        
+    def create_table(self):
+        self.table = ttk.Treeview(self.frame_table, column=("c1", "c2", "c3","c4","c5","c6","c7"), show='headings',height=25)
+        self.table.column("#1", anchor=tk.CENTER)
+        self.table.heading("#1", text="Nombre")
+        self.table.column("#2", anchor=tk.CENTER)
+        self.table.heading("#2", text="Artista")
+        self.table.column("#3", anchor=tk.CENTER)
+        self.table.heading("#3", text="Genero")
+        self.table.column("#4", anchor=tk.CENTER,minwidth=0, width=0)
+        self.table.heading("#4", text="IdUbicacion")
+        self.table.column("#5",anchor=tk.CENTER)
+        self.table.heading("#5", text="Lugar")
+        self.table.column("#6", anchor=tk.CENTER)
+        self.table.heading("#6", text="Direccion")
+        self.table.column("#7", anchor=tk.CENTER)
+        self.table.heading("#7", text="Hora")
         self.table.grid(row=1, column=0,padx=20, pady=20,sticky="nsew")
+
+        self.scrollable_frame_horizontal = customtkinter.CTkScrollbar(self.frame_table,command=self.table.xview,orientation="horizontal")
+        self.scrollable_frame_horizontal.grid(row=2, column=0,sticky="ew")
+        self.table.configure(xscrollcommand=self.scrollable_frame_horizontal.set)
+
+        self.scrollable_frame_vertical = customtkinter.CTkScrollbar(self.frame_table,command=self.table.yview,orientation="vertical")
+        self.scrollable_frame_vertical.grid(row=1, column=1,sticky="ns")
+        self.table.configure(xscrollcommand=self.scrollable_frame_vertical.set)
+
+        self.insert_table()
+    
+    
+

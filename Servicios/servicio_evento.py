@@ -1,6 +1,7 @@
 import json
-from Entidades.evento import Evento
 
+from Entidades.evento import Evento
+from Servicios.servicio_ubicacion import ServicioUbicacion
 class ServicioEventos:
 
     def __init__(self):
@@ -8,7 +9,7 @@ class ServicioEventos:
         try:
             with open("Persistencia/Eventos.json","r") as file:
                 eventos_json = json.load(file)
-                print(eventos_json)
+                
             for data in eventos_json:
                 eventos.append(Evento.from_json(data))
         except FileNotFoundError as error:
@@ -54,7 +55,12 @@ class ServicioEventos:
                 eventos.append(evento.to_json())
             json.dump(eventos, f, indent=4)
     
+    def get_eventos(self):
+        return self.eventos
     
+    def get_ubicacion(self,id_ubicacion):
+        servicio_ubicacion = ServicioUbicacion()
+        return servicio_ubicacion.buscarUbicacion(id_ubicacion)
 
     
 

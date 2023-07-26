@@ -44,7 +44,7 @@ class ServicioUbicacion:
         else:
             print("que no se encuentra la Ubicacion")
     
-    def get_values(self):
+    def get_ubicaciones(self):
         return self.ubicaciones
 
     def finalizar(self):

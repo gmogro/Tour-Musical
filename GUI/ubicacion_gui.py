@@ -3,15 +3,11 @@ from tkinter import ttk
 import customtkinter
 import os
 from PIL import Image,ImageTk
-from CTkTable import *
 from Servicios.servicio_ubicacion import ServicioUbicacion
 
 class UbicacionGui(customtkinter.CTkFrame):
     
     def __init__(self,root,corner_radius):
-
-        #header = ["NOMBRE","DIRECCION","ESTADO"]
-        values = self.get_values()
 
         super().__init__(root,corner_radius)
         self.grid_columnconfigure(0, weight=1)
@@ -38,42 +34,19 @@ class UbicacionGui(customtkinter.CTkFrame):
         self.boton_eliminar.grid(row=0,column=3,padx=10,pady=10)
         self.boton_ver.grid(row=0,column=4,padx=10,pady=10)
 
-        """ self.table = CTkTable(self.frame_table,  row=3, column=3, values=values)
-        self.table.grid(row=1, column=0,padx=20, pady=20,sticky="nsew")
-        self.table.edit_row(len(values)-2,hover=True) """
-        self.table = ttk.Treeview(self.frame_table, column=("c1", "c2", "c3"), show='headings')
-        self.table.column("#1", anchor=tk.CENTER)
-        self.table.heading("#1", text="Nombre")
-        self.table.column("#2", anchor=tk.CENTER)
-        self.table.heading("#2", text="Direccion")
-        self.table.column("#3", anchor=tk.CENTER)
-        self.table.heading("#3", text="Estado")
-        self.table.grid(row=1, column=0,padx=20, pady=20,sticky="nsew")
-        self.insert_table()
+        self.create_table()
         
-    
-    """ def get_values(self,header):
-        ubicaciones = ServicioUbicacion()
-        lista_ubicaciones = ubicaciones.get_values()
-        values = []
-        values.append(header)
-        for ubicacion in lista_ubicaciones:
-            fila_ubicacion = []
-            fila_ubicacion.append(ubicacion.nombre)
-            fila_ubicacion.append(ubicacion.direccion)
-            fila_ubicacion.append("Activo")
-            values.append(fila_ubicacion)
-        return values """
     
     def get_values(self):
         ubicaciones = ServicioUbicacion()
-        lista_ubicaciones = ubicaciones.get_values()
+        lista_ubicaciones = ubicaciones.get_ubicaciones()
         values = []
         for ubicacion in lista_ubicaciones:
             fila_ubicacion = []
             fila_ubicacion.append(ubicacion.nombre)
             fila_ubicacion.append(ubicacion.direccion)
-            fila_ubicacion.append("Activo")
+            fila_ubicacion.append(ubicacion.coordenadas[0])
+            fila_ubicacion.append(ubicacion.coordenadas[1])
             values.append(fila_ubicacion)
         return values
     
@@ -82,3 +55,15 @@ class UbicacionGui(customtkinter.CTkFrame):
         for ubicacion in ubicaciones:
             self.table.insert("", tk.END, values=ubicacion)
         
+    def create_table(self):
+        self.table = ttk.Treeview(self.frame_table, column=("c1", "c2", "c3","c4"), show='headings',height=25)
+        self.table.column("#1", anchor=tk.CENTER)
+        self.table.heading("#1", text="Nombre")
+        self.table.column("#2", anchor=tk.CENTER)
+        self.table.heading("#2", text="Direccion")
+        self.table.column("#3", anchor=tk.CENTER)
+        self.table.heading("#3", text="Latitud")
+        self.table.column("#4", anchor=tk.CENTER)
+        self.table.heading("#4", text="Longitud")
+        self.table.grid(row=1, column=0,padx=20, pady=20,sticky="nsew")
+        self.insert_table()

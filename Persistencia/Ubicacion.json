@@ -1,29 +1,29 @@
 [
     {
         "id": 1,
-        "nombre": "Mercado Artesanal",
-        "direccion": "San Martin",
+        "nombre": "Teatro Provincial Salta",
+        "direccion": "Zuviria 70",
         "coordenadas": [
-            "124124",
-            "124124124"
+            -24.788076551149896, 
+            -65.40937903863427
         ]
     },
     {
         "id": 2,
-        "nombre": "la esquina",
-        "direccion": "leguizamon 1243124",
+        "nombre": "Centro de Convenciones Salta",
+        "direccion": "Av. Paraguay 2900",
         "coordenadas": [
-            "12214",
-            "124124"
+            -24.82905124713889, 
+            -65.43448082009938
         ]
     },
     {
         "id": 3,
-        "nombre": "Mercado San Miguel",
-        "direccion": "San Martin 123",
+        "nombre": "Poliderportivo Delmi",
+        "direccion": "Ibazeta 1550",
         "coordenadas": [
-            "214142",
-            "412142142"
+            -24.77590604130751, 
+            -65.42337739311384
         ]
     }
 ]

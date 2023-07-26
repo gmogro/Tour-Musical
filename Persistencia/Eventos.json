@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "nombre": "Remastered Edition",
+    "artista": "Pablo Picasso",
+    "genero": "hip hop",
+    "id_ubicacion": 1,
+    "hora_inicio": "2023-03-27T09:10:26Z",
+    "descripcion": "Sed do eiusmod tempor incididunt",
+    "imagen": "http://dummyimage.com/178x100.png/cc0000/ffffff"
+  },
+  {
+    "id": 2,
+    "nombre": "Greatest Hits",
+    "artista": "Leonardo da Vinci",
+    "genero": "jazz",
+    "id_ubicacion": 2,
+    "hora_inicio": "2022-11-06T19:40:01Z",
+    "descripcion": "Consectetur adipiscing elit",
+    "imagen": "http://dummyimage.com/131x100.png/ff4444/ffffff"
+  },
+  {
+    "id": 3,
+    "nombre": "Live Performance",
+    "artista": "Vincent van Gogh",
+    "genero": "jazz",
+    "id_ubicacion": 3,
+    "hora_inicio": "2022-11-11T02:23:55Z",
+    "descripcion": "Sed do eiusmod tempor incididunt",
+    "imagen": "http://dummyimage.com/149x100.png/5fa2dd/ffffff"
+  },
+  {
+    "id": 4,
+    "nombre": "Best of",
+    "artista": "Pablo Picasso",
+    "genero": "pop",
+    "id_ubicacion": 1,
+    "hora_inicio": "2022-08-03T04:10:24Z",
+    "descripcion": "Sed do eiusmod tempor incididunt",
+    "imagen": "http://dummyimage.com/165x100.png/dddddd/000000"
+  },
+  {
+    "id": 5,
+    "nombre": "Greatest Hits",
+    "artista": "Vincent van Gogh",
+    "genero": "hip hop",
+    "id_ubicacion": 2,
+    "hora_inicio": "2023-06-17T18:20:26Z",
+    "descripcion": "Lorem ipsum dolor sit amet",
+    "imagen": "http://dummyimage.com/146x100.png/ff4444/ffffff"
+  },
+  {
+    "id": 6,
+    "nombre": "Greatest Hits",
+    "artista": "Pablo Picasso",
+    "genero": "jazz",
+    "id_ubicacion": 3,
+    "hora_inicio": "2023-02-24T03:15:43Z",
+    "descripcion": "Consectetur adipiscing elit",
+    "imagen": "http://dummyimage.com/171x100.png/5fa2dd/ffffff"
+  },
+  {
+    "id": 7,
+    "nombre": "Greatest Hits",
+    "artista": "Vincent van Gogh",
+    "genero": "pop",
+    "id_ubicacion": 2,
+    "hora_inicio": "2023-04-18T22:12:59Z",
+    "descripcion": "Lorem ipsum dolor sit amet",
+    "imagen": "http://dummyimage.com/111x100.png/dddddd/000000"
+  },
+  {
+    "id": 8,
+    "nombre": "Greatest Hits",
+    "artista": "Michelangelo",
+    "genero": "pop",
+    "id_ubicacion": 1,
+    "hora_inicio": "2023-04-02T22:01:23Z",
+    "descripcion": "Ut labore et dolore magna aliqua",
+    "imagen": "http://dummyimage.com/246x100.png/cc0000/ffffff"
+  },
+  {
+    "id": 9,
+    "nombre": "Remastered Edition",
+    "artista": "Michelangelo",
+    "genero": "pop",
+    "id_ubicacion": 2,
+    "hora_inicio": "2023-03-02T23:04:00Z",
+    "descripcion": "Consectetur adipiscing elit",
+    "imagen": "http://dummyimage.com/194x100.png/cc0000/ffffff"
+  },
+  {
+    "id": 10,
+    "nombre": "Best of",
+    "artista": "Leonardo da Vinci",
+    "genero": "country",
+    "id_ubicacion": 3,
+    "hora_inicio": "2022-11-21T17:56:44Z",
+    "descripcion": "Sed do eiusmod tempor incididunt",
+    "imagen": "http://dummyimage.com/215x100.png/cc0000/ffffff"
+  }
+]

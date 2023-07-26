@@ -1,9 +1,4 @@
-"""Usuario
-id (int): El identificador único del usuario.
-nombre (str): El nombre del usuario.
-apellido (str): El apellido del usuario.
-historial_eventos (List[int]): Una lista de IDs de 
-eventos a los que ha asistido el usuario."""
+
 class Usuario:
 
     def __init__(self,id,nombre,apellido,historial_eventos = None):
