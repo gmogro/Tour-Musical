@@ -4,7 +4,9 @@ from tkinter import ttk
 import customtkinter
 import os
 from PIL import Image
+from datetime import datetime
 from Servicios.servicio_evento import ServicioEventos
+from GUI.evento_info import EventoInfo
 class EventoGui(customtkinter.CTkFrame):
 
     def __init__(self,root,corner_radius):
@@ -28,12 +30,13 @@ class EventoGui(customtkinter.CTkFrame):
 
         self.boton_editar = customtkinter.CTkButton(self.frame_filter,text="EDITAR",fg_color="#02b0db",hover_color="#60d3f0")
         self.boton_eliminar = customtkinter.CTkButton(self.frame_filter,text="ELIMINAR",fg_color="red",hover_color="#e84351")
-        self.boton_ver = customtkinter.CTkButton(self.frame_filter,text="VER",fg_color="green",hover_color="#3bed44")
+        self.boton_ver = customtkinter.CTkButton(self.frame_filter,text="VER",fg_color="green",hover_color="#3bed44",command=self.event_info)
         self.boton_editar.grid(row=0,column=2,padx=10,pady=10)
         self.boton_eliminar.grid(row=0,column=3,padx=10,pady=10)
         self.boton_ver.grid(row=0,column=4,padx=10,pady=10)
         
         self.create_table()
+        self.table.bind("<Double-Button-1>", self.event_info)
 
     def get_values(self):
         eventos = ServicioEventos()
@@ -41,14 +44,18 @@ class EventoGui(customtkinter.CTkFrame):
         values = []
         for evento in lista_eventos:
             fila_evento = []
+            fila_evento.append(evento.id)
             fila_evento.append(evento.nombre)
             fila_evento.append(evento.artista)
             fila_evento.append(evento.genero[0])
             fila_evento.append(evento.id_ubicacion)
-            fila_evento.append(eventos.get_ubicacion(evento.id_ubicacion[0]))
-            fila_evento.append(eventos.get_ubicacion(evento.id_ubicacion[0]))
-            fila_evento.append(evento.hora_inicio)
+            fila_evento.append(eventos.get_ubicacion(evento.id_ubicacion[0]).nombre)
+            fila_evento.append(eventos.get_ubicacion(evento.id_ubicacion[0]).direccion)
+            hora_inicio = datetime.fromisoformat(evento.hora_inicio[0]).strftime("%d/%m/%Y %H:%M:%S")
+            fila_evento.append(hora_inicio)
             values.append(fila_evento)
+            fila_evento.append(evento.descripcion)
+            fila_evento.append(evento.imagen)
         return values
     
     def insert_table(self):
@@ -57,21 +64,28 @@ class EventoGui(customtkinter.CTkFrame):
             self.table.insert("", tk.END, values=evento)
         
     def create_table(self):
-        self.table = ttk.Treeview(self.frame_table, column=("c1", "c2", "c3","c4","c5","c6","c7"), show='headings',height=25)
-        self.table.column("#1", anchor=tk.CENTER)
-        self.table.heading("#1", text="Nombre")
+        self.table = ttk.Treeview(self.frame_table, column=("c1", "c2", "c3","c4","c5","c6","c7","c8","c9","c10"), show='headings',height=25)
+        self.table.column("#1", anchor=tk.CENTER,stretch=False, minwidth=0, width=0)
+        self.table.heading("#1", text="Id")
         self.table.column("#2", anchor=tk.CENTER)
-        self.table.heading("#2", text="Artista")
+        self.table.heading("#2", text="Nombre")
         self.table.column("#3", anchor=tk.CENTER)
-        self.table.heading("#3", text="Genero")
-        self.table.column("#4", anchor=tk.CENTER,minwidth=0, width=0)
-        self.table.heading("#4", text="IdUbicacion")
-        self.table.column("#5",anchor=tk.CENTER)
-        self.table.heading("#5", text="Lugar")
-        self.table.column("#6", anchor=tk.CENTER)
-        self.table.heading("#6", text="Direccion")
+        self.table.heading("#3", text="Artista")
+        self.table.column("#4", anchor=tk.CENTER)
+        self.table.heading("#4", text="Genero")
+        self.table.column("#5",anchor=tk.CENTER,stretch=False, minwidth=0, width=0)
+        self.table.heading("#5", text="Id_ubicacion")
+        self.table.column("#6",anchor=tk.CENTER)
+        self.table.heading("#6", text="Lugar")
         self.table.column("#7", anchor=tk.CENTER)
-        self.table.heading("#7", text="Hora")
+        self.table.heading("#7", text="Direccion")
+        self.table.column("#8", anchor=tk.CENTER)
+        self.table.heading("#8", text="Hora")
+        self.table.column("#9", anchor=tk.CENTER,stretch=False, minwidth=0, width=0)
+        self.table.heading("#9", text="Descripcion")
+        self.table.column("#10", anchor=tk.CENTER,stretch=False, minwidth=0, width=0)
+        self.table.heading("#10", text="imagen")
+
         self.table.grid(row=1, column=0,padx=20, pady=20,sticky="nsew")
 
         self.scrollable_frame_horizontal = customtkinter.CTkScrollbar(self.frame_table,command=self.table.xview,orientation="horizontal")
@@ -84,5 +98,17 @@ class EventoGui(customtkinter.CTkFrame):
 
         self.insert_table()
     
+    def get_evento_table(self):
+        indice = self.table.focus()
+        evento_row = self.table.item(indice)
+        if indice:
+            return evento_row["values"]
+        else:
+            return None
+
+    def event_info(self,event=None):
+        evento_row = self.get_evento_table()
+        event_level_info = EventoInfo(evento_row)
+        event_level_info.mainloop()
     
 
